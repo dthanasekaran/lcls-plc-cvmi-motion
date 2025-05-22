@@ -55,7 +55,7 @@ VAR
     fbMotionStageM4 : FB_MotionStage;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[    // Hardware Enable
+      <ST><![CDATA[     // Hardware Enable
     // CVMI
     // Gas Jet
     M1.bHardwareEnable := TRUE;

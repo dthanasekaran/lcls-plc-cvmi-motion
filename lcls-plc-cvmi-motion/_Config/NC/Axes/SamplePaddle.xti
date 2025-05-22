@@ -1318,14 +1318,12 @@ External Setpoint Generation:
 	<Axis Id="7" CreateSymbols="true" AxisType="1">
 		<Name>__FILENAME__</Name>
 		<AxisPara>
-			<General UnitName="Degree"/>
-			<Dynamic AccelerationMaximum="100" DecelerationMaximum="100" Acceleration="64.5934" Deceleration="64.5934" Jerk="417.23" DelayTime="0.008"/>
-			<Velo Maximum="20"/>
+			<Dynamic Acceleration="2" Deceleration="2" DelayTime="0.008"/>
+			<Velo Maximum="5"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
-			<ParameterChanged>257</ParameterChanged>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="4">
-			<EncPara ScaleFactorNumerator="0.0003125" Offset="-7.78125" MaxCount="#x0000ffff">
+			<EncPara ScaleFactorNumerator="7.8125e-05" Inverse="true" MaxCount="#x0000ffff">
 				<SoftEndMinControl Range="-2"/>
 				<SoftEndMaxControl Range="2"/>
 				<Inc RefSoftSyncMask="#x0000ffff"/>
@@ -1387,7 +1385,7 @@ External Setpoint Generation:
 			</Vars>
 		</Encoder>
 		<Drive Name="Drive" DrvType="24">
-			<DrvPara>
+			<DrvPara Inverse="true">
 				<Analog VeloReferenz="10" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
@@ -1458,10 +1456,10 @@ External Setpoint Generation:
 				</Var>
 			</Vars>
 		</Drive>
-		<Controller Name="Ctrl" CtrType="1">
+		<Controller Name="Ctrl" CtrType="2">
 			<CtrPara PriorControlFactor="1">
 				<PosDiffControl Range="0.5"/>
-				<PID PosKp="0"/>
+				<PID PosExtKp="1" DeadBandPosition="0.005"/>
 				<Observer BandWidth="20"/>
 			</CtrPara>
 		</Controller>
@@ -1483,6 +1481,25 @@ External Setpoint Generation:
 	<Mappings>
 		<OwnerA>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^SamplePaddle-EL7047">
+				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Error" Size="1" OffsA="3"/>
+				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Motor stall" Size="1" OffsA="7"/>
+				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Moving negative" Size="1" OffsA="5"/>
+				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Moving positive" Size="1" OffsA="4"/>
+				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Ready" Size="1" OffsA="1"/>
+				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Ready to enable" Size="1"/>
+				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Torque reduced" Size="1" OffsA="6"/>
+				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Warning" Size="1" OffsA="2"/>
+				<Link VarA="Drive^Inputs^In^nState2" VarB="STM Status^Status^Digital input 1" Size="1" OffsA="3"/>
+				<Link VarA="Drive^Inputs^In^nState2" VarB="STM Status^Status^Digital input 2" Size="1" OffsA="4"/>
+				<Link VarA="Drive^Inputs^In^nState2" VarB="STM Status^Status^Sync error" Size="1" OffsA="5"/>
+				<Link VarA="Drive^Inputs^In^nState2" VarB="STM Status^Status^TxPDO Toggle" Size="1" OffsA="7"/>
+				<Link VarA="Drive^Inputs^In^nState4" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
+				<Link VarA="Drive^Inputs^In^nState4" VarB="WcState^WcState" Size="1"/>
+				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="STM Control^Control^Enable" Size="1"/>
+				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="STM Control^Control^Reduce torque" Size="1" OffsA="2"/>
+				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="STM Control^Control^Reset" Size="1" OffsA="1"/>
+				<Link VarA="Drive^Outputs^Out^nCtrl2" VarB="STM Control^Control^Digital output 1" Size="1" OffsA="3"/>
+				<Link VarA="Drive^Outputs^Out^nDataOut2[0]" VarB="STM Velocity^Velocity"/>
 				<Link VarA="Enc^Inputs^In^nDataIn1[0]" VarB="ENC Status compact^Counter value"/>
 				<Link VarA="Enc^Inputs^In^nDataIn2[0]" VarB="ENC Status compact^Latch value"/>
 				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact^Status^Counter overflow" Size="1" OffsA="4"/>
