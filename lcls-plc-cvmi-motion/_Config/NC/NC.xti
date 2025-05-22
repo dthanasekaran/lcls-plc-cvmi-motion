@@ -19,6 +19,6 @@
 		<Axis File="GasJetX.xti" Id="1"/>
 		<Axis File="GasJetY.xti" Id="2"/>
 		<Axis File="GasJetZ.xti" Id="3"/>
-		<Axis File="SamplePaddle.xti" Id="7"/>
+		<Axis File="SamplePaddle.xti" Id="4"/>
 	</NC>
 </TcSmItem>

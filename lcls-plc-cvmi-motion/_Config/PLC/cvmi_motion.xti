@@ -983,7 +983,7 @@ External Setpoint Generation:
 		</DataType>
 	</DataTypes>
 	<Project GUID="{BE140C0D-19B5-44FF-802A-E5742642FDE5}" Name="cvmi_motion" PrjFilePath="..\..\cvmi_motion\cvmi_motion.plcproj" TmcFilePath="..\..\cvmi_motion\cvmi_motion.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{F667DBD9-688C-B2CF-3A40-3CFBDE30E4AD}" TmcPath="cvmi_motion\cvmi_motion.tmc">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{980DC65D-DEBB-DE97-8A48-332A0AE37D78}" TmcPath="cvmi_motion\cvmi_motion.tmc">
 			<Name>cvmi_motion Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="8" AreaNo="4">
